@@ -139,13 +139,14 @@ def convert_sequence(seq_dir: Path, ann_path: Path, out_dir: Path, fps: int):
         for i in range(len(frames))
     ]
 
-    # 2. Structure du tableau 'annotations'
+    # 2. Structure du tableau 'annotations' (avec video_id requis par Picsellia)
     coco_annotations = []
     for ann_id, r in enumerate(rows, start=1):
         f_idx = r["frame_index"] - 1
         coco_annotations.append({
             "id": ann_id,
             "image_id": r["frame_index"],
+            "video_id": 1,
             "category_id": r["category_id"],
             "bbox": r["bbox"],
             "area": round(r["bbox"][2] * r["bbox"][3], 2),

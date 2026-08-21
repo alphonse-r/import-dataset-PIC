@@ -1,2 +1,3 @@
 /.task_force_venv
 /output_visdrone_test
+.env
