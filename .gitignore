@@ -1,3 +1,20 @@
-/.task_force_venv
-/output_visdrone_test
+# Secrets (garder .env-example, qui ne contient que des valeurs d'exemple)
 .env
+.env.*
+
+# Environnements virtuels
+.venv/
+.task_force_venv/
+
+# Python
+__pycache__/
+*.pyc
+
+# Éditeurs et système
+.vscode/
+.idea/
+.DS_Store
+
+# Sorties générées par les scripts
+*.log
+output_visdrone*/
