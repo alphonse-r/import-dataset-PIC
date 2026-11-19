@@ -1,0 +1,983 @@
+[+] Racine : /Users/macbook-029h/dataset/by_subset
+[+] 6 set(s) à traiter : A1, A2, B1, B2, C1, C2
+
+[+] Connexion à l'API IDAH...
+[+] Connexion réussie !! Token JWT configuré.
+
+[+] Dataset 'A1' -> 01a05dd9-d4ab-75e3-84fb-bd821d66729f
+==============================================================================
+SET A1  (/Users/macbook-029h/dataset/by_subset/A1)
+35 vidéo(s) détectée(s)
+==============================================================================
+
+--- [A1 1/35] uav0000013_00000_v__f00057-00197.mp4 ---
+ -> Média prêt (ID: 69ed3af3b131e9afef54067008be528f.mp4, Resource: a1_826d0480b87040d1.mp4)
+[+] 0 entrée(s) déjà présente(s) dans le dataset.
+
+[+] 0 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05ddc-1695-70b8-afa9-808561e6c290)
+ -> Track #4 (tricycle) enregistré.
+ -> Track #30 (bicycle) enregistré.
+ -> Track #33 (awning-tricycle) enregistré.
+
+--- [A1 2/35] uav0000013_01073_v__f00001-00011.mp4 ---
+ -> Média prêt (ID: b04acc3253072ee0bdf48fe1ee84f1dc.mp4, Resource: a1_60f9d0a5f13d4a22.mp4)
+[+] 1 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05ddc-2919-786c-a7ac-64ca0711f710)
+
+--- [A1 3/35] uav0000020_00406_v__f00181-00191.mp4 ---
+ -> Média prêt (ID: af43d38d5652057f8a98b8cd12908bed.mp4, Resource: a1_8e40515f86d1489f.mp4)
+[+] 2 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05ddc-32fd-747f-8e15-c7220984f3a6)
+ -> Track #2 (awning-tricycle) enregistré.
+ -> Track #4 (bicycle) enregistré.
+
+--- [A1 4/35] uav0000071_03240_v__f00091-00151.mp4 ---
+ -> Média prêt (ID: a67ae3ef91559aa3af704b9c309752a6.mp4, Resource: a1_0d66d176984d4871.mp4)
+[+] 3 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05ddc-8f4a-7f5c-ad96-502c13c524a4)
+ -> Track #17 (bicycle) enregistré.
+ -> Track #29 (tricycle) enregistré.
+ -> Track #44 (van) enregistré.
+
+--- [A1 5/35] uav0000072_06432_v__f00001-00011.mp4 ---
+ -> Média prêt (ID: ed7edbd7e8d347fc59a7f4e7b7ad6e24.mp4, Resource: a1_e53c785456654dac.mp4)
+[+] 4 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05ddc-a15e-7f19-81d4-36c38e7f39db)
+ -> Track #25 (tricycle) enregistré.
+ -> Track #26 (tricycle) enregistré.
+ -> Track #27 (tricycle) enregistré.
+ -> Track #28 (tricycle) enregistré.
+ -> Track #29 (tricycle) enregistré.
+ -> Track #30 (van) enregistré.
+ -> Track #35 (van) enregistré.
+ -> Track #36 (tricycle) enregistré.
+ -> Track #39 (tricycle) enregistré.
+
+--- [A1 6/35] uav0000076_00720_v__f00021-00071.mp4 ---
+ -> Média prêt (ID: 2970daf88f1afc197cb13c1db61dc2ac.mp4, Resource: a1_b174dffacb654510.mp4)
+[+] 5 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05ddd-0e20-790b-afd5-be90f25e6ee0)
+ -> Track #24 (truck) enregistré.
+ -> Track #29 (tricycle) enregistré.
+ -> Track #31 (tricycle) enregistré.
+ -> Track #33 (tricycle) enregistré.
+ -> Track #34 (truck) enregistré.
+ -> Track #35 (truck) enregistré.
+
+--- [A1 7/35] uav0000076_00720_v__f00081-00111.mp4 ---
+ -> Média prêt (ID: 58e549493075b800772bc21f00f426ad.mp4, Resource: a1_945d84cdc17c4f23.mp4)
+[+] 6 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05ddd-52ae-71c8-92e1-3b7bb30b8eef)
+ -> Track #29 (tricycle) enregistré.
+ -> Track #31 (tricycle) enregistré.
+ -> Track #33 (tricycle) enregistré.
+ -> Track #34 (truck) enregistré.
+ -> Track #35 (truck) enregistré.
+ -> Track #37 (tricycle) enregistré.
+ -> Track #39 (van) enregistré.
+ -> Track #49 (truck) enregistré.
+ -> Track #54 (truck) enregistré.
+ -> Track #12 (truck) enregistré.
+
+--- [A1 8/35] uav0000076_00720_v__f00181-00211.mp4 ---
+ -> Média prêt (ID: 8252bf2d830d0c0dc2d18489c56211e8.mp4, Resource: a1_09ca09eeb7a64be9.mp4)
+[+] 7 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05ddd-b87c-7e59-adb4-8ffe2db552aa)
+ -> Track #12 (truck) enregistré.
+ -> Track #35 (truck) enregistré.
+ -> Track #49 (truck) enregistré.
+ -> Track #54 (truck) enregistré.
+ -> Track #21 (tricycle) enregistré.
+ -> Track #53 (truck) enregistré.
+
+--- [A1 9/35] uav0000099_02109_v__f00309-00449.mp4 ---
+ -> Média prêt (ID: b99e5b2fe4108f87932a2148a054f904.mp4, Resource: a1_58e4ac9889834d00.mp4)
+[+] 8 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05dde-6b82-7d51-afb5-fefb5909d473)
+
+--- [A1 10/35] uav0000126_00001_v__f00236-00246.mp4 ---
+ -> Média prêt (ID: 2f9807e1500b01ac0542faefe12f0bb5.mp4, Resource: a1_e6a2866d9591480a.mp4)
+[+] 9 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05dde-bbda-7df8-a87b-7da8c0e363b3)
+ -> Track #2 (bicycle) enregistré.
+ -> Track #28 (bus) enregistré.
+ -> Track #39 (van) enregistré.
+ -> Track #54 (van) enregistré.
+ -> Track #64 (bicycle) enregistré.
+ -> Track #185 (van) enregistré.
+ -> Track #220 (bicycle) enregistré.
+ -> Track #221 (bicycle) enregistré.
+
+--- [A1 11/35] uav0000126_00001_v__f00291-00301.mp4 ---
+ -> Média prêt (ID: dc370ad3743cc62232023c81eb2a3496.mp4, Resource: a1_2535e661a1e84da7.mp4)
+[+] 10 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05dde-f776-7431-89d5-6ab1fe1a78d4)
+ -> Track #28 (bus) enregistré.
+ -> Track #39 (van) enregistré.
+ -> Track #54 (van) enregistré.
+ -> Track #64 (bicycle) enregistré.
+ -> Track #220 (bicycle) enregistré.
+ -> Track #221 (bicycle) enregistré.
+ -> Track #11 (bicycle) enregistré.
+ -> Track #47 (bus) enregistré.
+ -> Track #49 (bus) enregistré.
+ -> Track #95 (van) enregistré.
+ -> Track #113 (van) enregistré.
+
+--- [A1 12/35] uav0000126_00001_v__f00306-00326.mp4 ---
+ -> Média prêt (ID: 74ea83bfd9bdf9b1e5a282ada834cdf8.mp4, Resource: a1_2be5d946211b463a.mp4)
+[+] 11 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05ddf-80a5-7c41-ba8d-0be9db68d179)
+ -> Track #11 (bicycle) enregistré.
+ -> Track #28 (bus) enregistré.
+ -> Track #39 (truck) enregistré.
+ -> Track #47 (bus) enregistré.
+ -> Track #49 (bus) enregistré.
+ -> Track #64 (bicycle) enregistré.
+ -> Track #95 (van) enregistré.
+ -> Track #113 (van) enregistré.
+ -> Track #220 (bicycle) enregistré.
+ -> Track #221 (bicycle) enregistré.
+
+--- [A1 13/35] uav0000140_01590_v__f00016-00036.mp4 ---
+ -> Média prêt (ID: fceb01347b34a78a7c721ade447bcc01.mp4, Resource: a1_f44c6581bcfe4b3b.mp4)
+[+] 12 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05ddf-e26c-7b76-9d74-2ac6475a0f6f)
+ -> Track #133 (bus) enregistré.
+ -> Track #134 (van) enregistré.
+ -> Track #151 (van) enregistré.
+ -> Track #35 (bicycle) enregistré.
+ -> Track #36 (bicycle) enregistré.
+
+--- [A1 14/35] uav0000143_02250_v__f00076-00086.mp4 ---
+ -> Média prêt (ID: 6ca07957d10318d9f116ed2358b0f919.mp4, Resource: a1_ea5ba2b07d2e4663.mp4)
+[+] 13 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05de0-1ab5-7e60-b24f-8b3b371a6928)
+ -> Track #9 (van) enregistré.
+ -> Track #37 (van) enregistré.
+ -> Track #56 (bus) enregistré.
+ -> Track #59 (bus) enregistré.
+ -> Track #102 (bicycle) enregistré.
+ -> Track #106 (bicycle) enregistré.
+ -> Track #108 (bicycle) enregistré.
+ -> Track #60 (bus) enregistré.
+
+--- [A1 15/35] uav0000222_03150_v__f00031-00041.mp4 ---
+ -> Média prêt (ID: c015c423fd4d0fe2b3d4a4ec5d3fe75d.mp4, Resource: a1_4a669ed3915742b3.mp4)
+[+] 14 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05de0-610f-737a-9fac-61113bd29e4c)
+ -> Track #7 (bicycle) enregistré.
+ -> Track #16 (truck) enregistré.
+ -> Track #17 (truck) enregistré.
+ -> Track #18 (awning-tricycle) enregistré.
+ -> Track #32 (bicycle) enregistré.
+ -> Track #33 (bicycle) enregistré.
+ -> Track #43 (bicycle) enregistré.
+ -> Track #44 (bus) enregistré.
+ -> Track #45 (truck) enregistré.
+ -> Track #49 (bus) enregistré.
+ -> Track #60 (tricycle) enregistré.
+ -> Track #62 (bicycle) enregistré.
+ -> Track #80 (van) enregistré.
+ -> Track #81 (van) enregistré.
+ -> Track #83 (truck) enregistré.
+ -> Track #90 (truck) enregistré.
+
+--- [A1 16/35] uav0000222_03150_v__f00111-00121.mp4 ---
+ -> Média prêt (ID: 5d581f0d441475456ffd5ce3c9de6e66.mp4, Resource: a1_1b812041d7cd40c5.mp4)
+[+] 15 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05de0-d389-7c5d-b5c4-f62fd403e331)
+ -> Track #7 (bicycle) enregistré.
+ -> Track #17 (truck) enregistré.
+ -> Track #26 (bus) enregistré.
+ -> Track #32 (bicycle) enregistré.
+ -> Track #33 (bicycle) enregistré.
+ -> Track #43 (bicycle) enregistré.
+ -> Track #44 (bus) enregistré.
+ -> Track #45 (truck) enregistré.
+ -> Track #49 (bus) enregistré.
+ -> Track #60 (tricycle) enregistré.
+ -> Track #62 (bicycle) enregistré.
+ -> Track #80 (van) enregistré.
+ -> Track #81 (van) enregistré.
+ -> Track #83 (truck) enregistré.
+ -> Track #90 (truck) enregistré.
+
+--- [A1 17/35] uav0000222_03150_v__f00166-00176.mp4 ---
+ -> Média prêt (ID: 6bd3476d2c75db276cedfaefc91d0a36.mp4, Resource: a1_a623cb30da264ca5.mp4)
+[+] 16 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05de1-04ce-7770-a9aa-5611c6c76420)
+ -> Track #7 (bicycle) enregistré.
+ -> Track #17 (truck) enregistré.
+ -> Track #26 (bus) enregistré.
+ -> Track #32 (bicycle) enregistré.
+ -> Track #33 (bicycle) enregistré.
+ -> Track #43 (bicycle) enregistré.
+ -> Track #44 (bus) enregistré.
+ -> Track #45 (truck) enregistré.
+ -> Track #49 (bus) enregistré.
+ -> Track #60 (tricycle) enregistré.
+ -> Track #62 (bicycle) enregistré.
+ -> Track #80 (van) enregistré.
+ -> Track #81 (van) enregistré.
+ -> Track #83 (truck) enregistré.
+ -> Track #90 (truck) enregistré.
+ -> Track #52 (van) enregistré.
+
+--- [A1 18/35] uav0000239_03720_v__f00397-00457.mp4 ---
+ -> Média prêt (ID: f034877f717b66a9ae0cf823392da427.mp4, Resource: a1_263be90841d64b69.mp4)
+[+] 17 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05de2-3b4f-74a0-8d1a-809797b8c0d4)
+ -> Track #18 (tricycle) enregistré.
+ -> Track #19 (tricycle) enregistré.
+ -> Track #30 (van) enregistré.
+ -> Track #31 (tricycle) enregistré.
+ -> Track #78 (van) enregistré.
+ -> Track #32 (tricycle) enregistré.
+ -> Track #40 (bicycle) enregistré.
+ -> Track #33 (van) enregistré.
+
+--- [A1 19/35] uav0000239_03720_v__f00516-00536.mp4 ---
+ -> Média prêt (ID: 07001ec2a2b1b75c9f230ed158c78a27.mp4, Resource: a1_34ebcd5d6bd647c3.mp4)
+[+] 18 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05de2-ac0e-716d-8e6e-93c78a5c7409)
+ -> Track #40 (tricycle) enregistré.
+ -> Track #43 (tricycle) enregistré.
+ -> Track #44 (awning-tricycle) enregistré.
+ -> Track #65 (bicycle) enregistré.
+ -> Track #76 (bus) enregistré.
+ -> Track #78 (van) enregistré.
+ -> Track #110 (tricycle) enregistré.
+ -> Track #88 (bicycle) enregistré.
+ -> Track #83 (van) enregistré.
+
+--- [A1 20/35] uav0000239_12336_v__f00029-00169.mp4 ---
+ -> Média prêt (ID: 563c1158f26ea8278e17cdceaf015d51.mp4, Resource: a1_4726c10ae71f453a.mp4)
+[+] 19 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05de4-92b8-72aa-b2e9-515d5925e301)
+ -> Track #13 (bus) enregistré.
+ -> Track #25 (bicycle) enregistré.
+ -> Track #40 (van) enregistré.
+ -> Track #45 (bicycle) enregistré.
+ -> Track #47 (bicycle) enregistré.
+ -> Track #57 (van) enregistré.
+
+--- [A1 21/35] uav0000263_03289_v__f00575-00715.mp4 ---
+ -> Média prêt (ID: 6860a6230750f64fa6ab6cc8240f41dd.mp4, Resource: a1_9cfbd7fa0f0c4337.mp4)
+[+] 20 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05de5-1bd8-737d-930d-2f71b184fb43)
+ -> Track #37 (bus) enregistré.
+ -> Track #36 (van) enregistré.
+ -> Track #40 (truck) enregistré.
+
+--- [A1 22/35] uav0000266_04830_v__f00016-00046.mp4 ---
+ -> Média prêt (ID: 9d77271e5a77d88dddf743dad162c0d8.mp4, Resource: a1_337a4652ab854c70.mp4)
+[+] 21 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05de6-01df-7a02-9d85-8d02080378cd)
+ -> Track #8 (truck) enregistré.
+
+--- [A1 23/35] uav0000266_04830_v__f00055-00115.mp4 ---
+ -> Média prêt (ID: e1c01f21b3cd5c75b9e9755b3d629d55.mp4, Resource: a1_ac2ae3559ec64f51.mp4)
+[+] 22 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05de7-9b65-74c0-9192-b08d8b392e51)
+ -> Track #8 (truck) enregistré.
+
+--- [A1 24/35] uav0000266_04830_v__f00106-00116.mp4 ---
+ -> Média prêt (ID: 387eae967ed03a8d0683f7717b0dbf9c.mp4, Resource: a1_7d17c4ba2f864f1a.mp4)
+[+] 23 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05de7-ee96-7cd6-998b-6c123b22f060)
+ -> Track #8 (truck) enregistré.
+
+--- [A1 25/35] uav0000270_00001_v__f00191-00241.mp4 ---
+ -> Média prêt (ID: b421dd9c1daf63d0f2e8efabbe777539.mp4, Resource: a1_d2e878b52a814452.mp4)
+[+] 24 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05de8-a25d-7eec-81d5-ff7d4bd3c382)
+ -> Track #79 (bicycle) enregistré.
+ -> Track #131 (bicycle) enregistré.
+ -> Track #133 (bicycle) enregistré.
+
+--- [A1 26/35] uav0000270_00001_v__f00276-00286.mp4 ---
+ -> Média prêt (ID: 3e5a4d9a9d0f942d907dfe84e4fa81fe.mp4, Resource: a1_f5c065c438274e22.mp4)
+[+] 25 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05de8-e122-7901-b57e-09420e17ba72)
+ -> Track #79 (bicycle) enregistré.
+ -> Track #131 (bicycle) enregistré.
+ -> Track #133 (bicycle) enregistré.
+ -> Track #116 (bus) enregistré.
+
+--- [A1 27/35] uav0000273_00001_v__f00081-00091.mp4 ---
+ -> Média prêt (ID: 452f8951c0b215bd52a2ba49d40236fb.mp4, Resource: a1_cb8e9bbfdb694d59.mp4)
+[+] 26 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05de9-1c84-711e-90ec-339c04a29e4a)
+ -> Track #0 (van) enregistré.
+ -> Track #2 (truck) enregistré.
+ -> Track #7 (truck) enregistré.
+ -> Track #8 (truck) enregistré.
+ -> Track #14 (van) enregistré.
+ -> Track #16 (truck) enregistré.
+ -> Track #22 (truck) enregistré.
+ -> Track #23 (truck) enregistré.
+ -> Track #37 (truck) enregistré.
+ -> Track #38 (truck) enregistré.
+ -> Track #42 (truck) enregistré.
+
+--- [A1 28/35] uav0000273_00001_v__f00641-00651.mp4 ---
+ -> Média prêt (ID: c07122bf826db1d8b342835af7357d20.mp4, Resource: a1_acab38496f7a4f9b.mp4)
+[+] 27 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05de9-4f23-7314-a406-36f832def6ec)
+ -> Track #37 (truck) enregistré.
+ -> Track #38 (truck) enregistré.
+ -> Track #40 (truck) enregistré.
+ -> Track #42 (truck) enregistré.
+ -> Track #49 (truck) enregistré.
+ -> Track #58 (van) enregistré.
+ -> Track #59 (truck) enregistré.
+ -> Track #63 (van) enregistré.
+ -> Track #64 (truck) enregistré.
+ -> Track #67 (truck) enregistré.
+ -> Track #68 (truck) enregistré.
+ -> Track #76 (van) enregistré.
+ -> Track #78 (truck) enregistré.
+ -> Track #80 (truck) enregistré.
+ -> Track #81 (truck) enregistré.
+
+--- [A1 29/35] uav0000281_00460_v__f00155-00295.mp4 ---
+ -> Média prêt (ID: 1fb4f75875ade6b63b3748682ab4761d.mp4, Resource: a1_159d80e2d7ec42dd.mp4)
+[+] 28 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05dea-72b8-7aa7-8958-6bad5294e35a)
+ -> Track #17 (tricycle) enregistré.
+ -> Track #59 (truck) enregistré.
+ -> Track #73 (bicycle) enregistré.
+ -> Track #161 (tricycle) enregistré.
+
+--- [A1 30/35] uav0000300_00000_v__f00193-00258.mp4 ---
+ -> Média prêt (ID: b4bbc266a6b67fcdc7f3380b767d3010.mp4, Resource: a1_6f3c8fc116ab4109.mp4)
+[+] 29 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05deb-d4fe-7840-969d-be4384f4c244)
+ -> Track #16 (tricycle) enregistré.
+ -> Track #20 (bus) enregistré.
+ -> Track #111 (awning-tricycle) enregistré.
+ -> Track #114 (bicycle) enregistré.
+ -> Track #117 (truck) enregistré.
+ -> Track #125 (tricycle) enregistré.
+ -> Track #4 (truck) enregistré.
+ -> Track #36 (tricycle) enregistré.
+
+--- [A1 31/35] uav0000307_00000_v__f00193-00258.mp4 ---
+ -> Média prêt (ID: 7104274a88a3bf4bdda82542bd560c01.mp4, Resource: a1_e7f50cd95ccd409b.mp4)
+[+] 30 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05dec-b31f-7d72-996a-15484eb8d524)
+ -> Track #23 (truck) enregistré.
+ -> Track #26 (tricycle) enregistré.
+ -> Track #40 (truck) enregistré.
+ -> Track #43 (truck) enregistré.
+
+--- [A1 32/35] uav0000307_00000_v__f00267-00407.mp4 ---
+ -> Média prêt (ID: 6852e7fb06f89f85ae94604c57217e66.mp4, Resource: a1_6c2804bba5b04d91.mp4)
+[+] 31 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05def-7de0-7d7c-9b6e-c67ff520f476)
+ -> Track #43 (truck) enregistré.
+ -> Track #58 (bus) enregistré.
+ -> Track #63 (van) enregistré.
+
+--- [A1 33/35] uav0000308_00000_v__f00067-00132.mp4 ---
+ -> Média prêt (ID: 077e83246aee070e4d3c82f8fd41be2e.mp4, Resource: a1_8311d037dff34cb6.mp4)
+[+] 32 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05df0-9e6f-789e-86f8-6bef780b91e0)
+ -> Track #42 (van) enregistré.
+ -> Track #44 (van) enregistré.
+ -> Track #52 (tricycle) enregistré.
+ -> Track #57 (bicycle) enregistré.
+ -> Track #58 (tricycle) enregistré.
+
+--- [A1 34/35] uav0000309_00000_v__f00265-00330.mp4 ---
+ -> Média prêt (ID: 5b42bb28199f4954da46c44179fd6fc1.mp4, Resource: a1_9eadadf04faa4327.mp4)
+[+] 33 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05df2-22d5-71f7-9bc4-2af0cd931622)
+ -> Track #3 (tricycle) enregistré.
+ -> Track #23 (van) enregistré.
+ -> Track #24 (bicycle) enregistré.
+ -> Track #169 (bicycle) enregistré.
+ -> Track #26 (bicycle) enregistré.
+ -> Track #54 (bicycle) enregistré.
+ -> Track #67 (van) enregistré.
+ -> Track #40 (tricycle) enregistré.
+ -> Track #175 (van) enregistré.
+ -> Track #56 (bicycle) enregistré.
+
+--- [A1 35/35] uav0000342_04692_v__f00001-00066.mp4 ---
+ -> Média prêt (ID: fbc0946139765b611348b330e156f6e5.mp4, Resource: a1_373f76a95cbd4a2b.mp4)
+[+] 34 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05df2-e996-7bd2-b510-a93a3793d373)
+ -> Track #3 (van) enregistré.
+ -> Track #4 (van) enregistré.
+ -> Track #12 (tricycle) enregistré.
+ -> Track #20 (van) enregistré.
+ -> Track #70 (bicycle) enregistré.
+ -> Track #71 (bicycle) enregistré.
+ -> Track #73 (bicycle) enregistré.
+ -> Track #82 (tricycle) enregistré.
+ -> Track #131 (van) enregistré.
+ -> Track #23 (truck) enregistré.
+ -> Track #49 (bicycle) enregistré.
+ -> Track #50 (van) enregistré.
+ -> Track #65 (van) enregistré.
+ -> Track #79 (tricycle) enregistré.
+[+] Dataset 'A2' -> 01a05dd9-d79c-7974-ba30-124fcb59443f
+==============================================================================
+SET A2  (/Users/macbook-029h/dataset/by_subset/A2)
+35 vidéo(s) détectée(s)
+==============================================================================
+
+--- [A2 1/35] uav0000013_00000_v__f00046-00056.mp4 ---
+ -> Média prêt (ID: 28f57d22978e62c5f37466ac40b6285e.mp4, Resource: a2_d2ddd82f4c394780.mp4)
+[+] 0 entrée(s) déjà présente(s) dans le dataset.
+
+[+] 0 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05df3-1b40-70ee-a505-80068d92de15)
+ -> Track #4 (tricycle) enregistré.
+
+--- [A2 2/35] uav0000013_00000_v__f00256-00266.mp4 ---
+ -> Média prêt (ID: ff2e0521e955cd3dafae613509977b8e.mp4, Resource: a2_9ddd584860064a58.mp4)
+[+] 1 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05df3-55e3-7184-b2fa-2a9637313059)
+
+--- [A2 3/35] uav0000020_00406_v__f00146-00176.mp4 ---
+ -> Média prêt (ID: d653d71b225d61246467b0816335f436.mp4, Resource: a2_a520cf4281684e55.mp4)
+[+] 2 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05df3-8c51-71d8-97d5-6a5418aa600b)
+ -> Track #2 (awning-tricycle) enregistré.
+ -> Track #4 (bicycle) enregistré.
+
+--- [A2 4/35] uav0000020_00406_v__f00197-00342.mp4 ---
+ -> Média prêt (ID: 625032f70ece8c16a3537a66bee8ce76.mp4, Resource: a2_0c131a4577614c21.mp4)
+[+] 3 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05df4-1804-7060-990a-489a2312561f)
+ -> Track #2 (awning-tricycle) enregistré.
+ -> Track #4 (bicycle) enregistré.
+
+--- [A2 5/35] uav0000072_04488_v__f00041-00071.mp4 ---
+ -> Média prêt (ID: 0cc69947d67d40b9cb2594c37eed3cd0.mp4, Resource: a2_d1f9eac6bbed4b66.mp4)
+[+] 4 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05df4-669e-7604-a6e3-19aefc5fafb6)
+ -> Track #9 (truck) enregistré.
+ -> Track #10 (awning-tricycle) enregistré.
+ -> Track #11 (van) enregistré.
+ -> Track #18 (bicycle) enregistré.
+ -> Track #19 (tricycle) enregistré.
+ -> Track #32 (tricycle) enregistré.
+
+--- [A2 6/35] uav0000072_05448_v__f00133-00193.mp4 ---
+ -> Média prêt (ID: b9a4816054f1a5938f22e591f6d4bfa1.mp4, Resource: a2_57133d7bae2b4c66.mp4)
+[+] 5 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05df4-cd1b-70b5-9716-8ef4e9e8dcbe)
+ -> Track #19 (tricycle) enregistré.
+ -> Track #33 (truck) enregistré.
+ -> Track #90 (tricycle) enregistré.
+ -> Track #92 (van) enregistré.
+ -> Track #34 (tricycle) enregistré.
+
+--- [A2 7/35] uav0000072_06432_v__f00016-00036.mp4 ---
+ -> Média prêt (ID: 0c333236db7cb40d39069aa714db9c87.mp4, Resource: a2_72548d6538914fb7.mp4)
+[+] 6 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05df5-0dd0-7e39-8d41-0c7e11c0a3b7)
+ -> Track #25 (tricycle) enregistré.
+ -> Track #26 (tricycle) enregistré.
+ -> Track #27 (tricycle) enregistré.
+ -> Track #28 (tricycle) enregistré.
+ -> Track #29 (tricycle) enregistré.
+ -> Track #30 (van) enregistré.
+ -> Track #35 (van) enregistré.
+ -> Track #36 (tricycle) enregistré.
+ -> Track #39 (tricycle) enregistré.
+
+--- [A2 8/35] uav0000072_06432_v__f00066-00086.mp4 ---
+ -> Média prêt (ID: d60f38ea9318a313400b9e2004d524ee.mp4, Resource: a2_4ea58272f72245da.mp4)
+[+] 7 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05df5-6663-70d9-a879-f152445c95a5)
+ -> Track #3 (truck) enregistré.
+ -> Track #25 (tricycle) enregistré.
+ -> Track #26 (tricycle) enregistré.
+ -> Track #27 (tricycle) enregistré.
+ -> Track #28 (tricycle) enregistré.
+ -> Track #29 (tricycle) enregistré.
+ -> Track #30 (van) enregistré.
+ -> Track #35 (van) enregistré.
+ -> Track #36 (tricycle) enregistré.
+ -> Track #39 (tricycle) enregistré.
+
+--- [A2 9/35] uav0000099_02109_v__f00155-00295.mp4 ---
+ -> Média prêt (ID: 0867ea722172d84f169507efa2f17cd9.mp4, Resource: a2_8d96c50f84294829.mp4)
+[+] 8 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05df7-9826-78f9-8a27-d03d2c60e6ce)
+
+--- [A2 10/35] uav0000124_00944_v__f00071-00081.mp4 ---
+ -> Média prêt (ID: 090f9366a305adf145146d97de86b181.mp4, Resource: a2_61d19a38bdb94285.mp4)
+[+] 9 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05df8-1047-7b59-83f7-0dab9a02ad3c)
+ -> Track #40 (bus) enregistré.
+ -> Track #50 (van) enregistré.
+ -> Track #51 (van) enregistré.
+ -> Track #54 (van) enregistré.
+ -> Track #56 (van) enregistré.
+ -> Track #65 (bicycle) enregistré.
+ -> Track #66 (bicycle) enregistré.
+ -> Track #104 (bicycle) enregistré.
+ -> Track #113 (bicycle) enregistré.
+ -> Track #145 (bicycle) enregistré.
+ -> Track #146 (bicycle) enregistré.
+ -> Track #147 (bicycle) enregistré.
+ -> Track #149 (bicycle) enregistré.
+
+--- [A2 11/35] uav0000124_00944_v__f00316-00326.mp4 ---
+ -> Média prêt (ID: d18ce84c92fc3a012baac1b3e3cff2e9.mp4, Resource: a2_7855d6f8a81f48a1.mp4)
+[+] 10 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05df8-80a1-7266-8e8c-940b2a0b90fe)
+ -> Track #50 (van) enregistré.
+ -> Track #51 (van) enregistré.
+ -> Track #54 (van) enregistré.
+ -> Track #56 (van) enregistré.
+ -> Track #65 (bicycle) enregistré.
+ -> Track #66 (bicycle) enregistré.
+ -> Track #104 (bicycle) enregistré.
+ -> Track #113 (bicycle) enregistré.
+ -> Track #115 (bicycle) enregistré.
+ -> Track #145 (bicycle) enregistré.
+ -> Track #146 (bicycle) enregistré.
+ -> Track #147 (bicycle) enregistré.
+ -> Track #149 (bicycle) enregistré.
+
+--- [A2 12/35] uav0000124_00944_v__f00331-00361.mp4 ---
+ -> Média prêt (ID: f67871ffbe27a29fb6edf5e2296a8221.mp4, Resource: a2_9e3998420c9440e1.mp4)
+[+] 11 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05df9-ac60-7d24-9e35-1b16369ac204)
+ -> Track #104 (bicycle) enregistré.
+ -> Track #113 (bicycle) enregistré.
+ -> Track #115 (bicycle) enregistré.
+ -> Track #145 (bicycle) enregistré.
+ -> Track #146 (bicycle) enregistré.
+ -> Track #147 (bicycle) enregistré.
+ -> Track #149 (bicycle) enregistré.
+
+--- [A2 13/35] uav0000126_00001_v__f00356-00366.mp4 ---
+ -> Média prêt (ID: f35fafcffa637ac1a605f3812518fbec.mp4, Resource: a2_992d96585b334cb8.mp4)
+[+] 12 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05dfa-2db2-72d3-80a6-5886ee63a057)
+ -> Track #11 (bicycle) enregistré.
+ -> Track #28 (bus) enregistré.
+ -> Track #39 (truck) enregistré.
+ -> Track #47 (bus) enregistré.
+ -> Track #49 (bus) enregistré.
+ -> Track #64 (bicycle) enregistré.
+ -> Track #95 (van) enregistré.
+ -> Track #113 (van) enregistré.
+
+--- [A2 14/35] uav0000145_00000_v__f00007-00072.mp4 ---
+ -> Média prêt (ID: 4d631124c7684011cb18f3f1d6183868.mp4, Resource: a2_5902666322e74361.mp4)
+[+] 13 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05dfd-42ff-77a6-8ead-28512b2e8ade)
+ -> Track #2 (van) enregistré.
+ -> Track #4 (bus) enregistré.
+
+--- [A2 15/35] uav0000145_00000_v__f00235-00295.mp4 ---
+ -> Média prêt (ID: 3529eb6cf48cbff22af4068d129a5fa0.mp4, Resource: a2_04f760a04995458f.mp4)
+[+] 14 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05e00-cad7-7d2e-86be-3152b0fa7f37)
+ -> Track #8 (van) enregistré.
+ -> Track #21 (van) enregistré.
+ -> Track #12 (van) enregistré.
+
+--- [A2 16/35] uav0000222_03150_v__f00266-00276.mp4 ---
+ -> Média prêt (ID: 07e6a7f9b758f0e831b144114360eb30.mp4, Resource: a2_8401f4cabc7d47c6.mp4)
+[+] 15 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05e01-4b08-7d2c-8cc1-cc393ea26ad4)
+ -> Track #7 (bicycle) enregistré.
+ -> Track #32 (bicycle) enregistré.
+ -> Track #33 (bicycle) enregistré.
+ -> Track #38 (van) enregistré.
+ -> Track #43 (bicycle) enregistré.
+ -> Track #44 (bus) enregistré.
+ -> Track #45 (truck) enregistré.
+ -> Track #49 (bus) enregistré.
+ -> Track #52 (van) enregistré.
+ -> Track #60 (tricycle) enregistré.
+ -> Track #62 (bicycle) enregistré.
+ -> Track #80 (van) enregistré.
+ -> Track #81 (van) enregistré.
+ -> Track #83 (truck) enregistré.
+ -> Track #90 (truck) enregistré.
+
+--- [A2 17/35] uav0000239_03720_v__f00001-00141.mp4 ---
+ -> Média prêt (ID: 1938f9eeac104e51fb5ae6572dab0cd2.mp4, Resource: a2_c0708460cc0640f3.mp4)
+[+] 16 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05e03-9430-7c79-a588-9ef48f32e8cf)
+ -> Track #144 (van) enregistré.
+ -> Track #154 (truck) enregistré.
+ -> Track #153 (van) enregistré.
+ -> Track #156 (van) enregistré.
+ -> Track #155 (truck) enregistré.
+ -> Track #158 (awning-tricycle) enregistré.
+
+--- [A2 18/35] uav0000239_03720_v__f00169-00309.mp4 ---
+ -> Média prêt (ID: c2a301056ab4a5852041a33442ec431a.mp4, Resource: a2_77a1531bd15c4a6f.mp4)
+[+] 17 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05e06-d62a-76e0-876b-fb12307d698d)
+ -> Track #60 (truck) enregistré.
+ -> Track #144 (van) enregistré.
+ -> Track #153 (van) enregistré.
+ -> Track #156 (van) enregistré.
+ -> Track #158 (awning-tricycle) enregistré.
+ -> Track #163 (awning-tricycle) enregistré.
+ -> Track #162 (truck) enregistré.
+ -> Track #164 (truck) enregistré.
+ -> Track #166 (tricycle) enregistré.
+ -> Track #10 (bicycle) enregistré.
+
+--- [A2 19/35] uav0000239_03720_v__f00466-00476.mp4 ---
+ -> Média prêt (ID: 8c89b6c19412cd32ecdb54531dad0512.mp4, Resource: a2_cbb1f7633e5d47f2.mp4)
+[+] 18 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05e07-3e40-7856-92ca-e3265ca70c89)
+ -> Track #33 (van) enregistré.
+ -> Track #34 (tricycle) enregistré.
+ -> Track #40 (tricycle) enregistré.
+ -> Track #78 (van) enregistré.
+ -> Track #86 (awning-tricycle) enregistré.
+ -> Track #44 (awning-tricycle) enregistré.
+ -> Track #76 (bus) enregistré.
+
+--- [A2 20/35] uav0000243_00001_v__f00589-00729.mp4 ---
+ -> Média prêt (ID: 352e5c7e127bbc798589a51aa6809ad5.mp4, Resource: a2_360f0cc31a054a80.mp4)
+[+] 19 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05e0a-d7ad-7575-a041-d343d6496775)
+ -> Track #194 (tricycle) enregistré.
+ -> Track #150 (van) enregistré.
+ -> Track #163 (awning-tricycle) enregistré.
+ -> Track #29 (tricycle) enregistré.
+ -> Track #17 (bicycle) enregistré.
+ -> Track #198 (van) enregistré.
+
+--- [A2 21/35] uav0000263_03289_v__f00326-00336.mp4 ---
+ -> Média prêt (ID: b164e9019b5d7ab01f098e5f663caac4.mp4, Resource: a2_f011e9b1b66a4c8e.mp4)
+[+] 20 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05e0b-0f20-71a9-8ef0-0b83cfa0f4ed)
+ -> Track #1 (bus) enregistré.
+ -> Track #2 (truck) enregistré.
+ -> Track #3 (truck) enregistré.
+ -> Track #6 (truck) enregistré.
+ -> Track #8 (truck) enregistré.
+ -> Track #12 (truck) enregistré.
+ -> Track #17 (truck) enregistré.
+ -> Track #37 (bus) enregistré.
+ -> Track #16 (truck) enregistré.
+
+--- [A2 22/35] uav0000266_03598_v__f00001-00141.mp4 ---
+ -> Média prêt (ID: 1bf028ff4810573915b4fc33e44f9d03.mp4, Resource: a2_5e4dc8c3c9534250.mp4)
+[+] 21 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05e10-6188-7b5a-91d8-c788018bda8f)
+ -> Track #3 (truck) enregistré.
+ -> Track #8 (truck) enregistré.
+
+--- [A2 23/35] uav0000270_00001_v__f00291-00301.mp4 ---
+ -> Média prêt (ID: a1bc4f79d4c6716e77ea518e24a177c1.mp4, Resource: a2_3c0623e98a68483d.mp4)
+[+] 22 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05e10-9ed8-7c61-afd6-70db9c799f0e)
+ -> Track #116 (bus) enregistré.
+ -> Track #131 (bicycle) enregistré.
+ -> Track #133 (bicycle) enregistré.
+ -> Track #119 (bicycle) enregistré.
+ -> Track #145 (bicycle) enregistré.
+ -> Track #146 (bicycle) enregistré.
+
+--- [A2 24/35] uav0000270_00001_v__f00306-00346.mp4 ---
+ -> Média prêt (ID: cc448f29968f4cd8ce114eaa1105d721.mp4, Resource: a2_7e39735cebb44fee.mp4)
+[+] 23 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05e11-5078-7200-aea0-9b0266d65abb)
+ -> Track #116 (bus) enregistré.
+ -> Track #119 (bicycle) enregistré.
+ -> Track #131 (bicycle) enregistré.
+ -> Track #133 (bicycle) enregistré.
+ -> Track #145 (bicycle) enregistré.
+ -> Track #146 (bicycle) enregistré.
+
+--- [A2 25/35] uav0000270_00001_v__f00337-00397.mp4 ---
+ -> Média prêt (ID: 69f623623cea1bd01b1c006c837e37cb.mp4, Resource: a2_ab4d219c805e412d.mp4)
+[+] 24 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05e12-5314-7d26-ac1e-9893aa916c4b)
+ -> Track #116 (bus) enregistré.
+ -> Track #119 (bicycle) enregistré.
+ -> Track #133 (bicycle) enregistré.
+ -> Track #123 (bicycle) enregistré.
+ -> Track #149 (bicycle) enregistré.
+ -> Track #150 (bicycle) enregistré.
+
+--- [A2 26/35] uav0000273_00001_v__f00051-00061.mp4 ---
+[ÉCHEC] Erreur sur A2/uav0000273_00001_v__f00051-00061.mp4: 401 Client Error: Unauthorized for url: https://idah.ingedata.ai/api/v1/media/medias/files/a2_ca657f7cfa064dcd.mp4
+
+--- [A2 27/35] uav0000273_00001_v__f00337-00402.mp4 ---
+[ÉCHEC] Erreur sur A2/uav0000273_00001_v__f00337-00402.mp4: 401 Client Error: Unauthorized for url: https://idah.ingedata.ai/api/v1/media/medias/files/a2_4eaa2fdfd8044c09.mp4
+
+--- [A2 28/35] uav0000273_00001_v__f00656-00666.mp4 ---
+[ÉCHEC] Erreur sur A2/uav0000273_00001_v__f00656-00666.mp4: 401 Client Error: Unauthorized for url: https://idah.ingedata.ai/api/v1/media/medias/files/a2_70f753ec2953469b.mp4
+
+--- [A2 29/35] uav0000273_00001_v__f00676-00686.mp4 ---
+[ÉCHEC] Erreur sur A2/uav0000273_00001_v__f00676-00686.mp4: 401 Client Error: Unauthorized for url: https://idah.ingedata.ai/api/v1/media/medias/files/a2_114accd73ed64ff7.mp4
+
+--- [A2 30/35] uav0000273_00001_v__f00706-00716.mp4 ---
+[ÉCHEC] Erreur sur A2/uav0000273_00001_v__f00706-00716.mp4: 401 Client Error: Unauthorized for url: https://idah.ingedata.ai/api/v1/media/medias/files/a2_3db7b0d97ce74c91.mp4
+
+--- [A2 31/35] uav0000279_00001_v__f00006-00026.mp4 ---
+[ÉCHEC] Erreur sur A2/uav0000279_00001_v__f00006-00026.mp4: 401 Client Error: Unauthorized for url: https://idah.ingedata.ai/api/v1/media/medias/files/a2_71e3d2443a89408b.mp4
+
+--- [A2 32/35] uav0000308_00000_v__f00001-00066.mp4 ---
+[ÉCHEC] Erreur sur A2/uav0000308_00000_v__f00001-00066.mp4: 401 Client Error: Unauthorized for url: https://idah.ingedata.ai/api/v1/media/medias/files/a2_a29d3fe37c9148d0.mp4
+
+--- [A2 33/35] uav0000309_00000_v__f00067-00132.mp4 ---
+[ÉCHEC] Erreur sur A2/uav0000309_00000_v__f00067-00132.mp4: 401 Client Error: Unauthorized for url: https://idah.ingedata.ai/api/v1/media/medias/files/a2_c8c58e1d87c5485b.mp4
+
+--- [A2 34/35] uav0000360_00001_v__f00223-00288.mp4 ---
+[ÉCHEC] Erreur sur A2/uav0000360_00001_v__f00223-00288.mp4: 401 Client Error: Unauthorized for url: https://idah.ingedata.ai/api/v1/media/medias/files/a2_6d3c33d291cb4cd7.mp4
+
+--- [A2 35/35] uav0000366_00001_v__f00286-00296.mp4 ---
+[ÉCHEC] Erreur sur A2/uav0000366_00001_v__f00286-00296.mp4: 401 Client Error: Unauthorized for url: https://idah.ingedata.ai/api/v1/media/medias/files/a2_3fabbe236cad4c39.mp4
+[!!] Lecture des datasets du projet impossible (Code 401)
+[+] Racine : /Users/macbook-029h/dataset/by_subset
+[+] 5 set(s) à traiter : A2, B1, B2, C1, C2
+
+[+] Connexion à l'API IDAH...
+[+] Connexion réussie !! Token JWT configuré.
+
+[+] Dataset 'A2' -> 01a05dd9-d79c-7974-ba30-124fcb59443f
+==============================================================================
+SET A2  (/Users/macbook-029h/dataset/by_subset/A2)
+35 vidéo(s) détectée(s)
+==============================================================================
+
+--- [A2 1/35] uav0000013_00000_v__f00046-00056.mp4 ---
+ -> Média prêt (ID: a7457ae32970d33623bb1c68b9c81f78.mp4, Resource: a2_9c678c14e46a4fa7.mp4)
+[+] 0 entrée(s) déjà présente(s) dans le dataset.
+
+[+] 0 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05e15-ce50-71c5-9b65-e3156dbb054c)
+ -> Track #4 (tricycle) enregistré.
+
+--- [A2 2/35] uav0000013_00000_v__f00256-00266.mp4 ---
+ -> Média prêt (ID: 5827fee4a544a89aff5b9553193adad6.mp4, Resource: a2_98d511834d6a4515.mp4)
+[+] 1 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05e15-f910-7c23-a98b-1c72f95930a0)
+
+--- [A2 3/35] uav0000020_00406_v__f00146-00176.mp4 ---
+ -> Média prêt (ID: 8174b4bc4790d3f863c6e35f87cedcbe.mp4, Resource: a2_acff3d52037e44c5.mp4)
+[+] 2 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05e16-8a5c-7376-a219-4108debe7dbc)
+ -> Track #2 (awning-tricycle) enregistré.
+ -> Track #4 (bicycle) enregistré.
+
+--- [A2 4/35] uav0000020_00406_v__f00197-00342.mp4 ---
+ -> Média prêt (ID: cb4d97657b834e8b88bfcdeacc3df66c.mp4, Resource: a2_67b8da3b5b554030.mp4)
+[+] 3 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05e19-8051-7023-a699-877938115252)
+ -> Track #2 (awning-tricycle) enregistré.
+ -> Track #4 (bicycle) enregistré.
+
+--- [A2 5/35] uav0000072_04488_v__f00041-00071.mp4 ---
+ -> Média prêt (ID: 8c5c4de4f92ec7c35012e9b45e6d7198.mp4, Resource: a2_56ad799c316844bf.mp4)
+[+] 4 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05e1b-d3c7-7cc6-9a02-79d0a489d3f5)
+ -> Track #9 (truck) enregistré.
+ -> Track #10 (awning-tricycle) enregistré.
+ -> Track #11 (van) enregistré.
+ -> Track #18 (bicycle) enregistré.
+ -> Track #19 (tricycle) enregistré.
+ -> Track #32 (tricycle) enregistré.
+
+--- [A2 6/35] uav0000072_05448_v__f00133-00193.mp4 ---
+ -> Média prêt (ID: c2bb32a393aabd77f9e868d71eebc1ff.mp4, Resource: a2_7e56b6ad7be8423c.mp4)
+[+] 5 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05e1e-3ad4-7b71-9bc2-62c8ddeddd29)
+ -> Track #19 (tricycle) enregistré.
+ -> Track #33 (truck) enregistré.
+ -> Track #90 (tricycle) enregistré.
+ -> Track #92 (van) enregistré.
+ -> Track #34 (tricycle) enregistré.
+
+--- [A2 7/35] uav0000072_06432_v__f00016-00036.mp4 ---
+ -> Média prêt (ID: 7a0747de7a411060b9945c8b5996e11a.mp4, Resource: a2_f8146cc3e1a14a83.mp4)
+[+] 6 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05e1f-8205-77e6-a7b4-4eb1b55cce87)
+ -> Track #25 (tricycle) enregistré.
+ -> Track #26 (tricycle) enregistré.
+ -> Track #27 (tricycle) enregistré.
+ -> Track #28 (tricycle) enregistré.
+ -> Track #29 (tricycle) enregistré.
+ -> Track #30 (van) enregistré.
+ -> Track #35 (van) enregistré.
+ -> Track #36 (tricycle) enregistré.
+ -> Track #39 (tricycle) enregistré.
+
+--- [A2 8/35] uav0000072_06432_v__f00066-00086.mp4 ---
+ -> Média prêt (ID: e065cb53cb19c6da9dec569f767a497d.mp4, Resource: a2_6d67d0107db94fb4.mp4)
+[+] 7 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05e21-0181-7171-b3db-c7d537a306a4)
+ -> Track #3 (truck) enregistré.
+ -> Track #25 (tricycle) enregistré.
+ -> Track #26 (tricycle) enregistré.
+ -> Track #27 (tricycle) enregistré.
+ -> Track #28 (tricycle) enregistré.
+ -> Track #29 (tricycle) enregistré.
+ -> Track #30 (van) enregistré.
+ -> Track #35 (van) enregistré.
+ -> Track #36 (tricycle) enregistré.
+ -> Track #39 (tricycle) enregistré.
+
+--- [A2 9/35] uav0000099_02109_v__f00155-00295.mp4 ---
+ -> Média prêt (ID: 1ca895976328d67647b409b9fab732fc.mp4, Resource: a2_1bd0017fbf3a4074.mp4)
+[+] 8 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05e29-edfe-776b-90a7-401fb95f610a)
+
+--- [A2 10/35] uav0000124_00944_v__f00071-00081.mp4 ---
+ -> Média prêt (ID: fd4d515498efdaabbe029d2753724447.mp4, Resource: a2_2591d9a645ef4693.mp4)
+[+] 9 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05e2b-d075-73bd-a195-3c88d2d15f15)
+ -> Track #40 (bus) enregistré.
+ -> Track #50 (van) enregistré.
+ -> Track #51 (van) enregistré.
+ -> Track #54 (van) enregistré.
+ -> Track #56 (van) enregistré.
+ -> Track #65 (bicycle) enregistré.
+ -> Track #66 (bicycle) enregistré.
+ -> Track #104 (bicycle) enregistré.
+ -> Track #113 (bicycle) enregistré.
+ -> Track #145 (bicycle) enregistré.
+ -> Track #146 (bicycle) enregistré.
+ -> Track #147 (bicycle) enregistré.
+ -> Track #149 (bicycle) enregistré.
+
+--- [A2 11/35] uav0000124_00944_v__f00316-00326.mp4 ---
+ -> Média prêt (ID: 31a126a31ae34a204940a08bac4570fd.mp4, Resource: a2_9fe7818e848540c0.mp4)
+[+] 10 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05e2d-c19b-7f49-baed-69d742e2c657)
+ -> Track #50 (van) enregistré.
+ -> Track #51 (van) enregistré.
+ -> Track #54 (van) enregistré.
+ -> Track #56 (van) enregistré.
+ -> Track #65 (bicycle) enregistré.
+ -> Track #66 (bicycle) enregistré.
+ -> Track #104 (bicycle) enregistré.
+ -> Track #113 (bicycle) enregistré.
+ -> Track #115 (bicycle) enregistré.
+ -> Track #145 (bicycle) enregistré.
+ -> Track #146 (bicycle) enregistré.
+ -> Track #147 (bicycle) enregistré.
+ -> Track #149 (bicycle) enregistré.
+
+--- [A2 12/35] uav0000124_00944_v__f00331-00361.mp4 ---
+ -> Média prêt (ID: ed23fde686df7bc4b34e56469008dafa.mp4, Resource: a2_83900abbaf204810.mp4)
+[+] 11 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05e33-4869-7563-b9dc-d94970a26f79)
+ -> Track #104 (bicycle) enregistré.
+ -> Track #113 (bicycle) enregistré.
+ -> Track #115 (bicycle) enregistré.
+ -> Track #145 (bicycle) enregistré.
+ -> Track #146 (bicycle) enregistré.
+ -> Track #147 (bicycle) enregistré.
+ -> Track #149 (bicycle) enregistré.
+
+--- [A2 13/35] uav0000126_00001_v__f00356-00366.mp4 ---
+ -> Média prêt (ID: f99d107946076fafb5c4844660851230.mp4, Resource: a2_f2ebe67b35ea446e.mp4)
+[+] 12 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05e35-7369-765e-ad05-d88cd875fb3d)
+ -> Track #11 (bicycle) enregistré.
+ -> Track #28 (bus) enregistré.
+ -> Track #39 (truck) enregistré.
+ -> Track #47 (bus) enregistré.
+ -> Track #49 (bus) enregistré.
+ -> Track #64 (bicycle) enregistré.
+ -> Track #95 (van) enregistré.
+ -> Track #113 (van) enregistré.
+
+--- [A2 14/35] uav0000145_00000_v__f00007-00072.mp4 ---
+ -> Média prêt (ID: 3b4112509428edb8e52d98335ee8eb8d.mp4, Resource: a2_2216884fc3e24fd0.mp4)
+[+] 13 entrée(s) déjà présente(s) dans le dataset.
+
+ -> Entrée prête (ID: 01a05e48-0755-7168-acc6-63e94ebaa773)
+ -> Track #2 (van) enregistré.
+ -> Track #4 (bus) enregistré.
+
+--- [A2 15/35] uav0000145_00000_v__f00235-00295.mp4 ---
+[ÉCHEC] Erreur sur A2/uav0000145_00000_v__f00235-00295.mp4: ('Connection aborted.', BrokenPipeError(32, 'Broken pipe'))
+
+--- [A2 16/35] uav0000222_03150_v__f00266-00276.mp4 ---

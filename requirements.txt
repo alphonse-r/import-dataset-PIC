@@ -2,3 +2,4 @@ Image
 picsellia
 dotenv
 Pillow
+opencv-python

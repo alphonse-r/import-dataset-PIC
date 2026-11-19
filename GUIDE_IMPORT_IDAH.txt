@@ -1,0 +1,731 @@
+================================================================================
+GUIDE DE LANCEMENT : import_video+annot_idah.py
+Import des videos + annotations MOT/VisDrone vers la plateforme IDAH
+================================================================================
+
+Repertoire de travail : /Users/macbook-029h/code/task_force_ds_team
+Toutes les commandes ci-dessous sont a lancer depuis ce repertoire.
+
+Attention : le nom du script contient un caractere "+", il doit toujours etre
+entoure de guillemets dans le terminal.
+
+
+--------------------------------------------------------------------------------
+PREREQUIS
+--------------------------------------------------------------------------------
+
+- Python 3.12 (et non 3.14 : les wheels opencv-python n'existent pas encore
+  pour 3.14). Deja installe et accessible via "python3.12"
+  (/opt/homebrew/bin/python3.12).
+- Un fichier .env configure a la racine du projet.
+- Les donnees sources sur le disque.
+
+Structure attendue du dossier source (valeur de IDAH_BASE_DIR) :
+
+    IDAH_BASE_DIR/                  <- la RACINE, pas un set
+    |-- A1/
+    |   |-- videos/                 -> les fichiers .mp4 (.avi/.mov/.mkv acceptes)
+    |   |-- annotations/            -> les .txt de meme nom que la video
+    |-- A2/
+    |-- B1/
+    |-- B2/
+    |-- C1/
+    |-- C2/
+
+Le script decouvre les sets tout seul : tout dossier contenant a la fois
+"videos/" et "annotations/" est traite, quelle que soit sa profondeur (une
+racine du type "sets/C/C1" fonctionne aussi, le set s'appellera alors "C_C1").
+Si IDAH_BASE_DIR est lui-meme un set (il contient directement videos/ et
+annotations/), il est traite seul : l'ancien fonctionnement mono-dossier
+reste donc valable, sans rien changer au .env.
+
+Variables utilisees dans le .env :
+
+    API_KEY                 cle API IDAH
+    IDAH_USER_EMAIL         email associe aux annotations creees
+    IDAH_PROJECT_ID         uuid du projet IDAH
+    IDAH_DATASET_ID         uuid du dataset IDAH
+    IDAH_BASE_DIR           chemin ABSOLU de la RACINE contenant les sets
+                            (ne pas utiliser "~", Python ne l'expanse pas)
+    IDAH_SETS               optionnel : liste des sets a importer, separes par
+                            des virgules (ex: A1,A2,B1). Vide = tous les sets.
+    IDAH_ENTRY_PREFIX       optionnel, defaut 1 : prefixe le nom de l'entry
+                            IDAH par le nom du set ("A1_clip.mp4"). Mettre 0
+                            pour garder le nom de fichier nu.
+    IDAH_DEFAULT_CATEGORY   categorie de repli uniquement, utilisee si un id
+                            de categorie est absent ou inconnu de CATEGORY_MAP
+
+Options de ligne de commande (prioritaires sur le .env) :
+
+    --base-dir <chemin>     racine a scanner
+    --sets A1,B2            n'importer que ces sets, dans cet ordre
+    --dry-run               inventaire seul, aucun envoi vers IDAH
+    --no-prefix             equivalent de IDAH_ENTRY_PREFIX=0
+
+
+--------------------------------------------------------------------------------
+DEUX FACONS D'APPELER LE VENV
+--------------------------------------------------------------------------------
+
+A lire avant les etapes suivantes : elles sont toutes ecrites sous la forme
+".venv/bin/python ...", et il existe une forme plus courte.
+
+Creer .venv/ ne change rien au terminal : c'est l'activation qui met
+.venv/bin en tete du PATH. D'ou deux ecritures strictement equivalentes.
+
+Forme explicite (celle utilisee dans tout ce guide) : on nomme le binaire du
+venv a chaque fois, aucune activation n'est necessaire.
+
+    .venv/bin/pip install -r requirements.txt
+    .venv/bin/python "import_video+annot_idah.py"
+
+Forme activee : une fois par session de terminal, ensuite "python" et "pip"
+designent ceux du venv.
+
+    source .venv/bin/activate
+    pip install -r requirements.txt
+    python "import_video+annot_idah.py"
+    deactivate
+
+Pour suivre ce guide en mode active, il suffit donc de retirer le prefixe
+".venv/bin/" de chaque commande : ".venv/bin/python X" devient "python X".
+
+La forme explicite est celle retenue ici parce qu'elle est sans etat : elle
+marche dans un nouveau terminal, un script ou un cron, et on ne peut pas se
+tromper d'interpreteur en oubliant l'activation. Le prompt affiche "(.venv)"
+quand l'environnement est actif ; "which python" permet de le confirmer.
+
+
+--------------------------------------------------------------------------------
+ETAPE 1 : ENVIRONNEMENT VIRTUEL ET DEPENDANCES
+--------------------------------------------------------------------------------
+
+A faire une seule fois, ou si vous repartez de zero.
+
+    python3.12 -m venv .venv
+    .venv/bin/pip install --upgrade pip
+    .venv/bin/pip install -r requirements.txt
+
+Ou, en activant le venv juste apres sa creation (meme resultat) :
+
+    python3.12 -m venv .venv
+    source .venv/bin/activate
+    pip install --upgrade pip
+    pip install -r requirements.txt
+
+La creation, elle, se fait forcement avec un interpreteur du systeme : le venv
+n'existe pas encore, il n'y a rien a activer a ce moment-la.
+
+Attention au suffixe "3.12" : sur cette machine "python3" tout court pointe
+sur python@3.14 (/opt/homebrew/bin/python3 -> Cellar/python@3.14). Un venv
+cree avec "python3 -m venv" serait donc en 3.14, sans wheel opencv-python.
+Seul le suffixe compte, pas le chemin : /opt/homebrew/bin est en tete du PATH,
+"python3.12" suffit. En cas de doute :
+
+    python3.12 --version        # doit afficher Python 3.12.x
+
+Remarque sur opencv-python : il a ete ajoute a requirements.txt le 2026-09-01
+et n'est donc plus a installer separement. Le script l'importe a la demande
+(import_video+annot_idah.py, ligne 142) pour lire la resolution native des
+videos. Sans lui, il retombe sur ffprobe puis, en dernier recours, sur une
+resolution codee en dur de 1920x1080, ce qui fausse les coordonnees relatives
+des bounding boxes : l'import ne plante pas, il produit des donnees fausses.
+C'est pour cela que la verification ci-dessous importe explicitement cv2.
+
+Verification que tout est en place :
+
+    .venv/bin/python -c "import cv2, requests, dotenv; print('OK', cv2.__version__)"
+
+
+--------------------------------------------------------------------------------
+ETAPE 2 : VERIFICATION LOCALE AVANT ENVOI (lecture seule)
+--------------------------------------------------------------------------------
+
+Cette commande parse les annotations en local et n'ecrit rien sur IDAH.
+Elle permet de controler le nombre de tracks et les classes detectees.
+
+Attention en copiant-collant : contrairement aux autres commandes du guide, le
+corps Python est volontairement colle a la marge gauche. Le shell ignore les
+espaces devant une commande, mais ici tout ce qui suit le guillemet est passe
+tel quel a Python : 4 espaces d'indentation en tete de la premiere ligne
+suffisent a provoquer "IndentationError: unexpected indent". Meme remarque
+pour l'etape 5.
+
+Une seule commande suffit desormais : --dry-run parse les annotations en
+local, compte les tracks et les classes, et n'ecrit rien sur IDAH.
+
+    .venv/bin/python "import_video+annot_idah.py" --dry-run
+
+Il affiche, dans l'ordre :
+  - la liste des sets trouves, avec videos et tracks de chacun, et les videos
+    sans fichier d'annotation ;
+  - la repartition des categories, tous sets confondus ;
+  - le bloc LIGNES SOURCES : lignes retenues et lignes ecartees, ventilees par
+    motif (regions ignorees, score 0, boites degenerees, lignes illisibles) ;
+  - le cas echeant, un bloc d'avertissement listant les ids de categorie
+    inconnus de CATEGORY_MAP, avec les sets concernes.
+
+Trois controles a faire sur cette sortie avant d'aller plus loin :
+  - les 6 sets sont bien la (sinon IDAH_BASE_DIR pointe au mauvais endroit) ;
+  - aucun bloc "IDS DE CATEGORIE INCONNUS" (voir plus bas) ;
+  - les classes sont variees. Si tout ressort identique (par exemple tout en
+    "vehicle"), c'est que le mapping CATEGORY_MAP ne s'applique pas : ne pas
+    lancer l'import.
+
+Exemple de sortie sur l'ancien dataset mono-dossier test-final :
+
+    test-final     35 video(s)    238 track(s)
+
+      Categories : {'truck': 60, 'bicycle': 59, 'van': 49, 'tricycle': 40,
+                    'bus': 25, 'awning-tricycle': 5}
+
+    LIGNES SOURCES
+      retenues : 1326
+      ecartees : 0
+
+Pour le detail par set en dehors du script (equivalent manuel) :
+
+    .venv/bin/python -c "
+import importlib.util, collections
+spec = importlib.util.spec_from_file_location('idah', 'import_video+annot_idah.py')
+m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
+root = m.BASE_DIR.resolve(); total = 0; glob = collections.Counter()
+for d in m.discover_sets(root):
+    c = collections.Counter(); t = 0
+    for v in m.list_videos(d/'videos'):
+        a = m.find_annotation_file(d/'annotations', v.stem)
+        if a is None: continue
+        for x in m.parse_annotation_file(a, v):
+            t += 1; c[x['category']] += len(x['dimensions']['frames'])
+    total += t; glob += c
+    print(m.set_label(d, root), '| tracks =', t, '|', dict(c))
+print('TOTAL tracks =', total); print(dict(glob))
+    "
+
+Attention : ce comptage manuel additionne les FRAMES par classe, la sortie du
+--dry-run compte les TRACKS. Sur test-final : 1326 frames pour 238 tracks.
+
+
+--------------------------------------------------------------------------------
+ETAPE 3 : TEST SUR UNE SEULE VIDEO (recommande)
+--------------------------------------------------------------------------------
+
+Premier envoi reel vers IDAH. Il valide que la plateforme accepte le format
+"idah-video:bounding-box" avant de lancer les 6 sets d'un coup.
+
+Le principe : on cree un mini set avec une seule video, et on surcharge la
+racine avec --base-dir. Le dossier ne contenant qu'un seul set, le script le
+traite tel quel.
+
+    mkdir -p /tmp/idah-smoke/A1/videos /tmp/idah-smoke/A1/annotations
+    ln -sf <racine>/A1/videos/<une_video>.mp4 /tmp/idah-smoke/A1/videos/
+    ln -sf <racine>/A1/annotations/<une_video>.txt /tmp/idah-smoke/A1/annotations/
+
+    .venv/bin/python "import_video+annot_idah.py" --base-dir /tmp/idah-smoke
+
+Sortie attendue : l'en-tete "SET A1", puis "Media pret", "Entree prete", puis
+une ligne "Track #N (classe) enregistre." par track, et enfin le tableau
+recapitulatif.
+
+En cas d'erreur, s'arreter ici et analyser la sortie avant d'aller plus loin.
+
+
+--------------------------------------------------------------------------------
+ETAPE 4 : IMPORT COMPLET DES 6 SETS EN UNE SEULE PASSE
+--------------------------------------------------------------------------------
+
+    .venv/bin/python "import_video+annot_idah.py" 2>&1 | tee import_idah.log
+
+Une seule commande, une seule authentification, les 6 sets enchaines dans
+l'ordre alphabetique (A1, A2, B1, B2, C1, C2). Chaque set est annonce par un
+en-tete, et l'execution se termine par un tableau recapitulatif :
+
+    SET             VIDEOS     OK   SKIP   ECHEC   TRACKS   TR.KO
+    A1                  36     36      0       0      241       0
+    ...
+    TOTAL              216    216      0       0     1447       0
+
+Colonnes : SKIP = video sans fichier d'annotation, ECHEC = exception pendant
+l'import de la video, TR.KO = tracks refusees par l'API. Une erreur sur une
+video n'interrompt pas le reste : le script passe a la suivante et l'incident
+est comptabilise dans le tableau.
+
+Duree : proportionnelle au volume total a televerser (compter environ ce que
+prenait un set, multiplie par six).
+La sortie est conservee dans import_idah.log pour analyse en cas de probleme.
+
+Pour ne relancer qu'une partie des sets (par exemple apres un echec sur B2) :
+
+    .venv/bin/python "import_video+annot_idah.py" --sets B2,C1,C2 2>&1 | tee -a import_idah.log
+
+IMPORTANT si l'etape 3 a ete faite : la video de test existe deja cote IDAH.
+Le script va retrouver son entry par son nom et la reutiliser, mais il va
+reenvoyer ses tracks, qui seront donc en double. Deux options :
+  - supprimer cette entry dans IDAH avant de lancer l'etape 4 ;
+  - ou accepter le doublon sur cette seule video.
+
+
+--------------------------------------------------------------------------------
+ETAPE 5 : CONTROLE FINAL
+--------------------------------------------------------------------------------
+
+Le comptage passe par load_entry_cache(), qui pagine : avec 6 sets le dataset
+depasse largement les 100 entries d'une page, et une lecture non paginee
+sous-compterait.
+
+    .venv/bin/python -c "
+import importlib.util, collections
+spec = importlib.util.spec_from_file_location('idah', 'import_video+annot_idah.py')
+m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
+m.login(); m.load_entry_cache()
+b = m.CTX['base_url']; per_set = collections.Counter(); tot = 0
+for name, eid in m.ENTRY_CACHE.items():
+    n = len(m.session.get(f'{b}/annotations?filter[entry_id]={eid}&page[size]=500').json().get('data', []))
+    per_set[name.split('_')[0]] += n; tot += n
+print('entries =', len(m.ENTRY_CACHE), '| annotations =', tot)
+print(dict(per_set))
+    "
+
+Les totaux doivent correspondre aux colonnes VIDEOS et TRACKS du tableau
+recapitulatif de l'etape 4, et la ventilation par set aux prefixes A1_, A2_,
+B1_, B2_, C1_, C2_ des noms d'entries.
+
+
+--------------------------------------------------------------------------------
+CORRECTIFS APPLIQUES AU SCRIPT (2026-09-01)
+--------------------------------------------------------------------------------
+
+Quatre corrections ont ete apportees a import_video+annot_idah.py :
+
+1. BASE_DIR : ajout de .expanduser()
+   Le .env contenait "~/dataset/test-final/" et Python n'expanse pas le "~",
+   le dossier n'etait donc jamais trouve. Le .env utilise desormais un chemin
+   absolu (sauvegarde dans .env.bak).
+
+2. clips_dir = BASE_DIR / "videos"
+   Le script cherchait un dossier "clips/" alors que le dossier source
+   s'appelle "videos/".
+
+3. query_entry_id() : en-tete Content-Type remplacee par Accept
+   L'API IDAH renvoie une erreur 400 (Verse::Error::BadRequest) si un
+   Content-Type est envoye sur une requete GET. C'etait bloquant : la
+   recherche d'entry existante echouait systematiquement, ce qui faisait
+   planter le script sur chaque video deja presente.
+
+4. Ajout de CATEGORY_MAP (mapping des ids de categorie VisDrone)
+   L'ancienne condition etait :
+
+       if len(parts) > 7 and parts[7] and not parts[7].replace("-","").isdigit():
+           category = parts[7]
+
+   Or VisDrone met un id NUMERIQUE en colonne 8. Le test "not isdigit()"
+   rejetait donc toujours la vraie classe et laissait passer la valeur de
+   IDAH_DEFAULT_CATEGORY. Les 238 tracks seraient toutes parties dans une
+   seule et meme categorie.
+   La table utilisee est identique a CATEGORY_MAP de visdrone_to_video_coco.py
+   (ligne 41), afin que les deux scripts restent coherents.
+
+
+--------------------------------------------------------------------------------
+DECLARER LES LABELS DU DATASET (declare_idah_labels.py)
+--------------------------------------------------------------------------------
+
+A faire une fois par dataset, sinon les classes ne s'affichent pas dans
+l'outil d'annotation.
+
+Un dataset cree sans labels a "labels": [] cote plateforme. L'API accepte
+alors n'importe quelle chaine dans annotation.category SANS validation :
+l'import reussit, la donnee stockee est correcte (chaque annotation porte bien
+sa categorie et son track_id), mais l'interface n'a aucune liste de classes a
+laquelle rattacher un nom ou une couleur. Toutes les boites se ressemblent a
+l'ecran alors que la donnee dessous est bonne.
+
+    .venv/bin/python declare_idah_labels.py            # simulation, n'ecrit rien
+    .venv/bin/python declare_idah_labels.py --apply    # ecrit les labels
+
+Sans --apply le script affiche seulement les labels actuels et ceux qu'il
+compte ecrire. Il est idempotent, et relit la valeur apres ecriture (voir plus
+bas pourquoi un code 200 ne suffit pas).
+
+Par defaut il declare CATEGORY_MAP dans l'ordre des ids VisDrone 1..11.
+L'id 0 "ignored regions" en est exclu : ce n'est pas un objet, et le script
+d'import le filtre desormais.
+
+SCHEMA DE L'ATTRIBUT "labels"
+Aucune documentation n'est exposee par l'API (ni OpenAPI, ni OPTIONS : tout
+repond 404). Le schema a ete etabli par sondage. "labels" est un tableau de
+CHAINES, stocke dans une colonne Postgres text[] :
+
+    ["pedestrian", "people", "bicycle", ...]
+
+Rien d'autre ne fonctionne :
+
+    "une chaine"                    -> 422 ValidationFailed "must be an array"
+    [{"name": "bicycle", ...}]      -> 200 MAIS ecrit ["false"] en base
+    [{"id": 3, "name": ...}]        -> 500 PG::InvalidTextRepresentation
+
+Le deuxieme cas est le piege : l'API repond 200 et corrompt en silence. Le
+hash est evalue comme un booleen Ruby avant d'atteindre la colonne text[]
+(visible dans l'erreur du 3e cas : UPDATE "datasets" SET "labels" = ARRAY[
+(('id' = 3) AND ('nam...). D'ou la relecture systematique apres PATCH dans
+declare_idah_labels.py : ne jamais se fier au code retour seul.
+
+Consequence pratique : il n'y a ni couleur ni id par label, juste des noms.
+Ils doivent correspondre EXACTEMENT aux valeurs de annotation.category, donc
+aux noms de CATEGORY_MAP.
+
+
+--------------------------------------------------------------------------------
+LES CATEGORIES : D'OU ELLES VIENNENT, COMMENT ELLES SONT TRAITEES
+--------------------------------------------------------------------------------
+
+Format source : VisDrone-MOT, 10 colonnes separees par des virgules.
+
+    <frame_index>,<target_id>,<bbox_left>,<bbox_top>,<bbox_width>,<bbox_height>,
+    <score>,<object_category>,<truncation>,<occlusion>
+
+La classe d'un objet est la COLONNE 8 (object_category), un id numerique. La
+table de correspondance est la specification VisDrone :
+
+    0  ignored regions        6  truck
+    1  pedestrian             7  tricycle
+    2  people                 8  awning-tricycle
+    3  bicycle                9  bus
+    4  car                   10  motor
+    5  van                   11  others
+
+Dans le repo elle est ecrite en dur a deux endroits, jamais lue d'un fichier :
+  - visdrone_to_video_coco.py, CATEGORY_MAP (source d'origine, script Picsellia)
+  - import_video+annot_idah.py, CATEGORY_MAP (copie, commentaire "Identique a")
+Toute modification doit etre reportee dans les deux, sinon les deux chaines
+d'import divergent.
+
+L'ID 0 EST VOLONTAIREMENT ABSENT des deux CATEGORY_MAP : "ignored regions"
+n'est pas un objet, c'est une zone que l'annotation demande d'ignorer. Il est
+filtre en amont, via la constante IGNORED_CATEGORY_ID.
+
+Quatre types de lignes sont ecartees au parsing, a l'identique de
+visdrone_to_video_coco.py :
+
+    colonne 8 == 0        region ignoree, pas un objet
+    colonne 7 == 0        score 0 : ligne a ne pas prendre en compte
+    largeur|hauteur <= 0  boite degeneree, rien a annoter
+    ligne illisible       moins de 6 colonnes, ou champs non numeriques
+
+Le test sur le score porte sur "== 0" exactement, et non sur int(score) : une
+confiance fractionnaire (0.9) doit etre conservee, alors que int(0.9) vaut 0
+et l'aurait fait ecarter a tort.
+
+Si l'id de categorie n'est ni 0 ni present dans CATEGORY_MAP, la ligne est
+CONSERVEE, avec la valeur de IDAH_DEFAULT_CATEGORY, et l'id est remonte en fin
+d'execution dans un bloc d'avertissement :
+
+    [!] IDS DE CATEGORIE INCONNUS -> importes en "vehicle"
+        - id 99 : 1 ligne(s)
+        Set(s) concerne(s) : B1
+        Completer CATEGORY_MAP puis reimporter ces sets.
+
+C'est le point a surveiller : IDAH_DEFAULT_CATEGORY est un FILET, pas une
+classe. Une valeur qui apparait dans la repartition des categories signale un
+id que le script n'a pas su traduire, pas un vrai objet de ce type.
+
+Derniere subtilite : la categorie est lue par ligne, mais une track prend la
+categorie de sa PREMIERE frame. Deux tracks de test-final sont dans ce cas
+(bruit VisDrone) :
+    uav0000126_00001_v__f00291-00301  track 39 : van -> truck
+    uav0000239_03720_v__f00397-00457  track 40 : bicycle -> tricycle
+
+
+--------------------------------------------------------------------------------
+MISE A JOUR : FILTRAGE VISDRONE ET IDS INCONNUS (2026-09-01)
+--------------------------------------------------------------------------------
+
+Le script IDAH ne faisait aucun des controles de visdrone_to_video_coco.py
+(lignes 102-104 de ce dernier). Consequences avant correction :
+
+  - une ligne de categorie 0 (region ignoree) tombait dans le repli et etait
+    importee comme un vrai objet, sous le nom "vehicle" ;
+  - la colonne 7 (score) n'etait jamais lue : les lignes marquees "a ne pas
+    prendre en compte" partaient quand meme ;
+  - les boites de largeur ou hauteur nulle passaient aussi ;
+  - un id hors table finissait silencieusement en IDAH_DEFAULT_CATEGORY, sans
+    aucun signalement.
+
+Le symptome aurait ete muet : ni erreur, ni echec d'import, juste des objets
+en trop et des classes fausses dans la plateforme.
+
+Mesure sur test-final (1326 lignes) au moment de la correction : 0 ligne en
+categorie 0, 0 en score 0, 0 boite degeneree. Le probleme etait donc LATENT
+sur ce dataset, et les 238 tracks deja importees sont saines. Rien ne garantit
+que les 6 nouveaux sets soient aussi propres : d'ou le --dry-run prealable.
+
+Verification apres correction : test-final redonne exactement 238 tracks et la
+meme repartition (truck 60, bicycle 59, van 49, tricycle 40, bus 25,
+awning-tricycle 5), identique a ce que contient deja la plateforme.
+
+
+--------------------------------------------------------------------------------
+MISE A JOUR : IMPORT MULTI-SETS EN UNE PASSE (2026-09-01)
+--------------------------------------------------------------------------------
+
+Le script traitait un seul dossier par execution (process_set_c1, prefixe de
+resource "c1_" code en dur), ce qui imposait six lancements et six editions du
+.env pour A1, A2, B1, B2, C1 et C2. Il prend desormais une RACINE et enchaine
+tous les sets qu'il y trouve.
+
+Ce qui a change :
+
+1. Decouverte automatique des sets (discover_sets)
+   Tout dossier contenant "videos/" et "annotations/" est un set, cherche
+   jusqu'a 3 niveaux sous la racine. Une racine qui est elle-meme un set est
+   traitee seule : le fonctionnement precedent est preserve.
+
+2. Une seule authentification pour l'ensemble des sets, au lieu d'une par set.
+
+3. Cache des entries avec pagination (load_entry_cache)
+   L'ancien query_entry_id() lisait UNE page de 100 entries et refaisait cette
+   requete pour chaque video. Sur 6 sets, deux consequences : les entries
+   au-dela de la 100e etaient invisibles (donc recreees en doublon), et le
+   nombre de requetes croissait au carre du nombre de videos. La liste est
+   maintenant chargee une fois, page par page, puis tenue a jour en memoire.
+
+4. Nom d'entry prefixe par le set ("A1_clip.mp4")
+   Les entries sont retrouvees par leur nom : deux clips homonymes dans deux
+   sets differents auraient partage la meme entry, et les annotations du
+   second se seraient ajoutees a celles du premier. Desactivable avec
+   --no-prefix ou IDAH_ENTRY_PREFIX=0.
+
+5. Prefixe de resource derive du set (au lieu de "c1_" en dur), extensions
+   video elargies (.mp4 .avi .mov .mkv .m4v) avec le type MIME correspondant,
+   annotation cherchee en .txt puis .json.
+
+6. Options --base-dir, --sets, --dry-run, --no-prefix, et un tableau
+   recapitulatif par set + total en fin d'execution.
+
+
+--------------------------------------------------------------------------------
+POINTS DE VIGILANCE
+--------------------------------------------------------------------------------
+
+- IDAH_DEFAULT_CATEGORY ("vehicle") ne doit jamais apparaitre dans la
+  repartition des categories. Si c'est le cas, des ids de categorie n'ont pas
+  ete traduits : lire le bloc "IDS DE CATEGORIE INCONNUS" en fin d'execution,
+  completer CATEGORY_MAP dans les deux scripts, et reimporter les sets cites.
+
+- Le dataset IDAH a "labels": [] tant que declare_idah_labels.py n'a pas ete
+  lance. L'API accepte alors n'importe quelle chaine sans validation : les
+  categories sont bien enregistrees, mais elles ne s'affichent pas dans l'outil
+  d'annotation. Voir la section "DECLARER LES LABELS DU DATASET".
+
+- Deux fichiers d'annotations sont vides. Les videos sont importees, mais sans
+  aucune annotation :
+      uav0000013_01073_v__f00001-00011.txt
+      uav0000099_02109_v__f00309-00449.txt
+
+- Deux tracks ont un id de categorie incoherent dans les donnees source
+  (bruit VisDrone) :
+      uav0000126_00001_v__f00291-00301  track 39 : van -> truck
+      uav0000239_03720_v__f00397-00457  track 40 : bicycle -> tricycle
+  Le script attribue a toute la track la categorie de sa premiere frame.
+
+- Reprise apres incident : le tableau recapitulatif indique quel set a
+  echoue. On peut relancer uniquement celui-la avec --sets, sans repasser sur
+  les autres. Attention toutefois au point suivant : les videos deja importees
+  du set relance verront leurs annotations dupliquees.
+
+- Le script est concu pour etre relance sans risque cote medias et entries :
+  chaque video est televersee sous un "resource" UUID unique pour contourner
+  le soft-delete, et les entries existantes sont retrouvees par nom et
+  reutilisees. En revanche les ANNOTATIONS ne sont pas dedupliquees : relancer
+  le script sur un dataset deja annote cree des doublons.
+
+- requirements.txt contient un paquet "Image" (obsolete, 2015) qui tire Django
+  au passage, et "dotenv" au lieu de "python-dotenv". Ces entrees concernent
+  l'ancien script Picsellia. Les dependances reellement necessaires a ce
+  script sont : requests, python-dotenv, opencv-python.
+
+
+--------------------------------------------------------------------------------
+COULEURS PAR LABEL (declare_idah_label_config.py)
+--------------------------------------------------------------------------------
+
+SYMPTOME : dans l'outil d'annotation, un meme label apparait en plusieurs
+couleurs, alors qu'on attend une couleur unique par classe, identique dans
+tous les datasets.
+
+Ce n'est ni le GT ni l'import. Aucune couleur n'existe dans la donnee :
+  - le payload de upload_annotation ne contient que category et
+    attributes.track_id (import_video+annot_idah.py, ligne 546) ;
+  - l'objet annotation en base n'a aucun champ couleur (ses attributs sont
+    annotation, dimensions, entry_id, dataset_id, project_id, metadata,
+    created_by_email, created_at, updated_at) ;
+  - "labels" est un text[], donc des noms nus.
+Faute de mapping classe -> couleur, le front colore PAR ANNOTATION. Comme une
+annotation = une track chez nous, six tracks "bicycle" donnent six couleurs.
+
+La couleur vit dans l'attribut "labeling_configuration" du dataset, laisse a
+{} jusqu'ici.
+
+    .venv/bin/python declare_idah_label_config.py            # simulation
+    .venv/bin/python declare_idah_label_config.py --apply    # ecrit
+    .venv/bin/python declare_idah_label_config.py --apply --dataset <uuid>,<uuid>
+    .venv/bin/python declare_idah_label_config.py --apply --force   # ecrase l'existant
+    .venv/bin/python declare_idah_label_config.py --apply --reset   # remet {}
+
+Sans --force le script refuse d'ecraser une configuration existante qui differe
+de la sienne : une config posee a la main dans l'interface peut contenir des
+classes ou des proprietes qu'il ne connait pas.
+
+SCHEMA DE "labeling_configuration"
+Aucune doc (meme constat que pour "labels"). Le schema a ete releve sur des
+datasets deja configures via l'interface (GET /datasets, chercher ceux dont
+labeling_configuration n'est pas vide ; "VisDrone_sequence" et "A-A16" sont de
+bons exemples).
+
+    {
+      "idah-video:bounding-box": {        <- "<modality>:<shape>"
+        "order": 0,
+        "values": [
+          { "id": "car",                  <- DOIT egaler annotation.category
+            "label": "Car",               <- libelle affiche
+            "color": "#00BBD6",           <- couleur de la boite
+            "text_color": "#000000",
+            "order": 0,
+            "parent": null,               <- hierarchie : id = "vehicle/car"
+            "children": [],
+            "expanded": true }
+        ],
+        "properties": []                  <- champs de saisie par annotation
+      }
+    }
+
+"id" est la cle de jointure avec la donnee importee ; "label" n'est qu'un
+affichage. La modalite se lit sur le dataset (ici idah-video) et la shape est
+bounding-box, ce que produit l'import.
+
+PIEGE : LA COLONNE EST UN JSONB LIBRE
+Contrairement a "labels" (text[], qui rejette ou corrompt les formes
+invalides), labeling_configuration accepte N'IMPORTE QUELLE forme, y compris
+une cle inventee, et la relit a l'identique. Un PATCH a 200 suivi d'une
+relecture conforme ne prouve donc RIEN sur l'interpretation par le front :
+une forme inventee passerait tous ces controles sans jamais colorer une boite.
+C'est pourquoi le schema a ete releve sur des datasets reels et non devine.
+
+REMARQUE SUR "labels"
+Tous les datasets configures via l'interface ont "labels": []. La liste de
+classes reellement exploitee a l'ecran est celle de labeling_configuration.
+declare_idah_labels.py reste sans effet de bord, mais c'est ce script-ci qui
+compte pour l'affichage.
+
+PALETTE
+Les 11 couleurs sont celles du selecteur de l'interface IDAH, avec leur
+text_color d'origine, fixees en dur dans PALETTE :
+
+    pedestrian  #F6402B      truck            #6A34BE
+    people      #EB1461      tricycle         #FFC100
+    bicycle     #CCDD1D      awning-tricycle  #FF9700
+    car         #3C4DB7      bus              #46AF4A
+    van         #00BBD6      motor            #009687
+                             others           #828282
+
+C'est cette table en dur qui garantit qu'un label garde la meme couleur d'un
+dataset a l'autre : la modifier a un seul endroit, ici.
+
+A FAIRE POUR CHAQUE NOUVEAU DATASET, au meme titre que declare_idah_labels.py.
+Pour aligner plusieurs datasets existants d'un coup :
+
+    .venv/bin/python declare_idah_label_config.py --apply --force \
+        --dataset <uuid_A1>,<uuid_A2>,<uuid_B1>,<uuid_B2>,<uuid_C1>,<uuid_C2>
+
+
+--------------------------------------------------------------------------------
+JWT EXPIRE PENDANT UN IMPORT LONG (2026-09-01)
+--------------------------------------------------------------------------------
+
+SYMPTOME : au-dela d'un certain temps d'execution, chaque video echoue avec
+
+    [ECHEC] Erreur sur A2/<clip>.mp4: 401 Client Error: Unauthorized for url:
+    https://idah.ingedata.ai/api/v1/media/medias/files/a2_<uuid>.mp4
+
+puis, au changement de set, "[!!] Lecture des datasets du projet impossible
+(Code 401)" et l'arret du script.
+
+CAUSE : login() n'etait appele qu'une fois, au demarrage. Le JWT a une duree
+de vie plus courte qu'un import de 210 videos : passe ce delai, toutes les
+requetes partent avec un token perime.
+
+CORRECTIF : la session est desormais une AuthSession (sous-classe de
+requests.Session). Sur un 401, elle rejoue login() puis reemet la requete une
+fois. Deux details qui comptent :
+
+  - un garde-fou (_relogin_in_progress) evite la recursion infinie, login()
+    passant lui-meme par cette session ;
+  - avant de rejouer un upload, les objets fichier de "files" sont rembobines
+    avec seek(0). Sans cela la requete rejouee enverrait un corps vide, et
+    creerait un media vide sans erreur visible.
+
+Verification : casser volontairement le header Authorization puis emettre une
+requete doit afficher "[+] JWT expire, reauthentification..." et renvoyer 200.
+
+CONSEQUENCE SUR LA REPRISE : un set interrompu a des entrees partielles. Les
+entrees etant retrouvees par nom et les annotations n'etant PAS dedupliquees,
+relancer le set par-dessus dupliquerait les annotations des videos deja
+traitees. Vider le dataset du set avant de le relancer :
+
+    .venv/bin/python delete_idah_entries.py --dataset <uuid> --match '.' \
+        --apply --force --reset-status
+
+Pour suivre un import long en direct, prefixer la commande de
+PYTHONUNBUFFERED=1 : sans cela Python bufferise sa sortie dans le tee et le
+log reste vide plusieurs minutes.
+
+
+--------------------------------------------------------------------------------
+TIMEOUTS ET COUPURES RESEAU (2026-09-02)
+--------------------------------------------------------------------------------
+
+Trois incidents distincts sont apparus sur les imports longs. Les trois sont
+corriges dans AuthSession et upload_media.
+
+1. BLOCAGE INFINI
+   requests etait appele sans timeout. Sur une socket morte, le processus
+   attend indefiniment : un import est reste fige toute une nuit sur la meme
+   video, sans message et sans reprise possible. Le compteur d'entrees cote
+   API est le seul moyen de s'en apercevoir -- le log, lui, ne bouge plus.
+   Correctif : timeout par defaut (10 s connexion, 300 s lecture) sur toutes
+   les requetes de la session.
+
+2. COUPURES PASSAGERES
+   BrokenPipeError et ConnectionError en cours d'import. Correctif : 3
+   tentatives avec backoff (5 s, 10 s), et rembobinage seek(0) des fichiers
+   avant chaque reessai -- sans quoi la requete rejouee enverrait un corps
+   vide et creerait un media vide SANS erreur visible. Sur un import complet,
+   10 reessais ont ete declenches et ont sauve autant de videos.
+
+3. LES GROS FICHIERS ECHOUAIENT SYSTEMATIQUEMENT
+   Symptome : "('Connection aborted.', TimeoutError('The write operation timed
+   out'))" sur les 3 plus gros clips (9 a 27 Mo, contre 2 Mo de mediane), y
+   compris avec un reseau parfaitement sain -- des videos plus petites
+   passaient dans la meme seconde.
+
+   Cause, contre-intuitive : dans urllib3, la phase d'ECRITURE DU CORPS est
+   regie par le premier terme du timeout (celui dit "de connexion"), pas par
+   le second. Avec timeout=(10, 900), l'envoi etait coupe apres exactement
+   10 s. La mesure le montre : 3 tentatives + backoff = 46 s, soit ~10 s par
+   essai. Un fichier de 27 Mo ne peut pas partir en moins de 10 s sur ce lien.
+
+   Correctif : upload_media utilise timeout=(120, 900). Allonger le second
+   terme n'aurait rien change.
+
+DEBIT MONTANT
+Le temps d'un import est domine par le televersement, pas par l'API (GET et
+POST de controle repondent en ~0,4 s meme quand tout rame). Mesures sur le
+meme corpus, mesme code :
+
+    5 s/video    ->  210 videos en 18 min
+    44 s/video   ->   35 videos en 25 min
+    253 s/video  ->   14 videos en 55 min   (~15 Ko/s : lien sature)
+
+Avant de conclure a un probleme de plateforme, comparer la latence d'un GET
+(normale = quelques centaines de ms) au temps par video : si le GET est rapide
+et l'upload lent, c'est la bande passante montante locale.
