@@ -43,8 +43,10 @@ une campagne dont les sets s'appellent `J1_G1`, `J1_G2`…
 
 - `visdrone_to_video_coco.py` : transforme des séquences d'images VisDrone en
   vidéos MP4 et en fichiers JSON Video-COCO.
-- `import_annot_to_picsellia.py` : envoie ces JSON sur une version de dataset
+- `upload_videos_to_picsellia.py` : met ces vidéos dans la version de dataset
   Picsellia.
+- `import_annot_to_picsellia.py` : envoie les annotations (les JSON) sur ces
+  vidéos.
 
 Enfin, `GUIDE_IMPORT_IDAH.txt` est le carnet de bord du projet. Il rassemble
 tout ce qu'on a appris de l'API IDAH, qui n'a aucune documentation, ainsi que
@@ -272,7 +274,13 @@ Les deux options de la première commande :
 
 ## Importer sur Picsellia
 
-Il y a trois étapes, dont une à faire à la main.
+Trois commandes, à lancer dans l'ordre.
+
+Pour comprendre la deuxième, il faut savoir comment Picsellia range les
+fichiers. Le **Datalake** stocke les fichiers eux-mêmes. Une **version de
+dataset** référence une sélection de ces fichiers, et c'est sur eux que
+s'accrochent les annotations. Une annotation ne peut donc être importée que si
+sa vidéo est déjà dans la version de dataset.
 
 **1. Convertir les séquences VisDrone.** Le dossier d'entrée doit contenir
 `sequences/` (un dossier d'images par séquence) et `annotations/` (un `.txt`
@@ -285,9 +293,20 @@ python visdrone_to_video_coco.py --root /chemin/vers/VisDrone --out ./output_vis
 Tu obtiens `output_visdrone/clips/*.mp4` et
 `output_visdrone/annotations/*_video_coco.json`.
 
-**2. Envoyer les vidéos sur Picsellia**, dans la version de dataset visée. Le
-script de l'étape suivante ne le fait pas, et il refuse d'importer une
-annotation dont la vidéo est absente.
+**2. Mettre les vidéos dans la version de dataset.** Le script téléverse
+les MP4 dans le Datalake, puis les ajoute à la version de dataset de
+`PICSELLIA_DATASET_VERSION_ID`. Sans `--apply`, il montre seulement ce qu'il
+ferait :
+
+```bash
+python upload_videos_to_picsellia.py --clips_dir ./output_visdrone/clips
+python upload_videos_to_picsellia.py --clips_dir ./output_visdrone/clips --apply
+```
+
+Tu peux le relancer sans risque. Il ignore les vidéos déjà présentes dans la
+version, et il réutilise celles qui sont déjà dans le Datalake au lieu de les
+renvoyer. Garde les noms de fichiers tels qu'ils sortent de l'étape 1 : c'est
+par le nom que chaque JSON retrouve sa vidéo.
 
 **3. Importer les annotations :**
 
