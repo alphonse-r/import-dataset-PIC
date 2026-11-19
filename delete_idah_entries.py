@@ -3,7 +3,7 @@
 Supprime des entrees d'un dataset IDAH, selectionnees par expression reguliere.
 
 POURQUOI :
-    Les entrees sont retrouvees PAR NOM par import_video+annot_idah.py. Un
+    Les entrees sont retrouvees PAR NOM par import_video_et_annot_idah.py. Un
     import fait sans prefixe de set, puis rejoue avec prefixe, ne reutilise
     donc pas les anciennes entrees : il en cree de nouvelles et le dataset
     garde les deux jeux. Ce script sert a retirer le jeu obsolete.
@@ -33,7 +33,7 @@ import argparse
 import importlib.util
 from pathlib import Path
 
-SCRIPT = Path(__file__).with_name("import_video+annot_idah.py")
+SCRIPT = Path(__file__).with_name("import_video_et_annot_idah.py")
 
 
 def load_importer():

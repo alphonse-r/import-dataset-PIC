@@ -24,7 +24,7 @@ USAGE :
     .venv/bin/python declare_idah_labels.py --apply    # ecrit les labels
     .venv/bin/python declare_idah_labels.py --apply --labels a,b,c   # liste explicite
 
-Par defaut la liste declaree est CATEGORY_MAP de import_video+annot_idah.py,
+Par defaut la liste declaree est CATEGORY_MAP de import_video_et_annot_idah.py,
 dans l'ordre des ids VisDrone 1..11. L'id 0 ("ignored regions") en est exclu :
 ce n'est pas un objet, et le script d'import le filtre desormais.
 """
@@ -35,7 +35,7 @@ import argparse
 import importlib.util
 from pathlib import Path
 
-SCRIPT = Path(__file__).with_name("import_video+annot_idah.py")
+SCRIPT = Path(__file__).with_name("import_video_et_annot_idah.py")
 
 
 def load_importer():

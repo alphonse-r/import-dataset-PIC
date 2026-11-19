@@ -16,10 +16,10 @@ USAGE :
          pour eviter les collisions entre sets ayant des clips homonymes)
 
     2. Lancement du script :
-       python3 "import_video+annot_idah.py"
-       python3 "import_video+annot_idah.py" --sets A1,B2          # sous-ensemble
-       python3 "import_video+annot_idah.py" --base-dir /chemin    # override du .env
-       python3 "import_video+annot_idah.py" --dry-run             # inventaire seul
+       python3 "import_video_et_annot_idah.py"
+       python3 "import_video_et_annot_idah.py" --sets A1,B2          # sous-ensemble
+       python3 "import_video_et_annot_idah.py" --base-dir /chemin    # override du .env
+       python3 "import_video_et_annot_idah.py" --dry-run             # inventaire seul
 
 PRÉREQUIS :
     - Python 3.8+

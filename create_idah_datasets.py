@@ -48,7 +48,7 @@ import argparse
 import importlib.util
 from pathlib import Path
 
-SCRIPT = Path(__file__).with_name("import_video+annot_idah.py")
+SCRIPT = Path(__file__).with_name("import_video_et_annot_idah.py")
 CONFIG_SCRIPT = Path(__file__).with_name("declare_idah_label_config.py")
 
 MODALITY = "idah-video"
@@ -201,7 +201,7 @@ def main():
             print(f"  {label:<6} {ds_id}")
         print(f"\nA reporter dans le .env :\n  IDAH_PROJECT_ID={project_id}")
         print("\nL'import resout les datasets par leur nom :")
-        print('  .venv/bin/python "import_video+annot_idah.py" --dataset-per-set')
+        print('  .venv/bin/python "import_video_et_annot_idah.py" --dataset-per-set')
     if failed:
         sys.exit(1)
 

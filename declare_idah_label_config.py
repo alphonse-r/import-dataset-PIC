@@ -5,7 +5,7 @@ Declare la configuration d'affichage des labels (couleurs) du dataset IDAH.
 LE PROBLEME :
     Dans l'outil d'annotation, un meme label apparait en plusieurs couleurs.
     Ce n'est ni le GT ni l'import : aucune couleur n'existe dans la donnee.
-    import_video+annot_idah.py n'envoie que category + attributes.track_id, et
+    import_video_et_annot_idah.py n'envoie que category + attributes.track_id, et
     l'objet annotation en base n'a aucun champ couleur. Faute de mapping
     classe -> couleur, le front colore PAR ANNOTATION -- donc par track, chez
     nous -- et six tracks "bicycle" donnent six couleurs.
@@ -64,7 +64,7 @@ import argparse
 import importlib.util
 from pathlib import Path
 
-SCRIPT = Path(__file__).with_name("import_video+annot_idah.py")
+SCRIPT = Path(__file__).with_name("import_video_et_annot_idah.py")
 
 # Forme d'annotation produite par l'import : des boites englobantes.
 SHAPE = "bounding-box"
